@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Dataset
+dataset/
+
+# YOLO training results
+runs/
+
+# Outputs
+outputs/
+
+# Temp files
+temp.jpg
+
+# Virtual environment
+env/
+venv/
+
+# OS files
+.DS_Store

@@ -1,0 +1,6 @@
+train: dataset/combined_gunsnknifes/train/images
+val: dataset/combined_gunsnknifes/val/images
+test: dataset/combined_gunsnknifes/test/images
+
+nc: 2
+names: ['pistol','knife']
