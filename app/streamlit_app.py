@@ -6,7 +6,7 @@ from ultralytics import YOLO
 
 st.set_page_config(page_title="AI Surveillance System", layout="wide")
 
-st.title("🔍 AI Surveillance System - Weapon Detection")
+st.title(" AI Surveillance System - Weapon Detection")
 
 # Load model once — falls back to yolov8n.pt if best.pt is missing
 @st.cache_resource
@@ -14,7 +14,7 @@ def load_model():
     # Try custom trained model first
     for model_path in ["models/best.pt", "yolo26n.pt", "yolov8n.pt"]:
         if os.path.exists(model_path):
-            st.info(f"✅ Loaded model: `{model_path}`")
+            st.info(f"Loaded model: `{model_path}`")
             return YOLO(model_path)
 
     # If nothing found locally, download yolov8n from ultralytics (always works)
@@ -73,22 +73,26 @@ elif option == "Video Upload":
 
         cap.release()
         os.remove(video_path)
-        st.success("✅ Video processing complete.")
+        st.success(" Video processing complete.")
 
 
 # ---------------- WEBCAM ----------------
 elif option == "Webcam":
 
-    st.header("📹 Webcam Detection")
+    st.header(" Webcam Detection")
 
     # Detect if running on Streamlit Cloud (no /dev/video0)
     is_cloud = not os.path.exists("/dev/video0")
 
     if is_cloud:
         st.error(
-            "🚫 **Webcam is not available on Streamlit Cloud.**\n\n"
-            "To use webcam detection, run the app locally:\n"
-            "```\nstreamlit run app/streamlit_app.py\n```"
+            st.info(
+    "📹 **Webcam detection is a computer vision feature that works locally.**\n\n"
+    "This feature uses real-time video stream processing with OpenCV and YOLOv8. "
+    "Live webcam inference will be available in a future update of this app.\n\n"
+    "To try it now on your local machine:\n"
+    "```\nstreamlit run app/streamlit_app.py\n```"
+)
         )
     else:
         run = st.checkbox("▶️ Start Webcam")
