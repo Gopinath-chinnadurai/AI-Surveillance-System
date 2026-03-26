@@ -2,8 +2,6 @@ import streamlit as st
 import cv2
 import tempfile
 from ultralytics import YOLO
-
-# Load trained model
 model = YOLO("runs/detect/train/weights/best.pt")
 
 st.title("AI Surveillance System - Weapon Detection")
@@ -13,9 +11,6 @@ option = st.sidebar.selectbox(
     ("Webcam", "Image Upload", "Video Upload")
 )
 
-# -----------------------------
-# IMAGE DETECTION
-# -----------------------------
 
 if option == "Image Upload":
 
@@ -35,10 +30,6 @@ if option == "Image Upload":
         result_image = results[0].plot()
 
         st.image(result_image, channels="BGR")
-
-# -----------------------------
-# VIDEO DETECTION
-# -----------------------------
 
 elif option == "Video Upload":
 
@@ -70,10 +61,6 @@ elif option == "Video Upload":
             stframe.image(frame, channels="BGR")
 
         cap.release()
-
-# -----------------------------
-# WEBCAM DETECTION
-# -----------------------------
 
 elif option == "Webcam":
 
